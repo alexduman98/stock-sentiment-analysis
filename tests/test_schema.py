@@ -11,6 +11,12 @@ def test_document_row() :
         text="AAPL going up",
         author = None,
         url = None,
+        meta = {
+                "subreddit": "wallstreetbets",
+                "score": 123,
+                "num_comments": 45,
+                "over_18": False,
+}
     )
     
     row = doc.to_row()

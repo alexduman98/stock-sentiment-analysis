@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from typing import Optional
+from typing import Optional, Dict,Any 
 
 
 @dataclass
@@ -13,6 +13,7 @@ class Document:
     text: str
     author: Optional[str] = None
     url : Optional[str] = None
+    meta : Dict[str, Any] = None 
 
     def to_row(self):
         return{
@@ -24,14 +25,6 @@ class Document:
             "text" : self.text,
             "author": self.author,
             "url" : self.url,       
+            "meta":self.meta or {},
         }
 
-doc = Document(
-    doc_id="test123",
-    source="reddit",
-    source_id="t3_abc",
-    created_at=datetime.now(timezone.utc),
-    collected_at=datetime.now(timezone.utc),
-    text="AAPL earnings look strong",
-)
-print(doc.to_row())
